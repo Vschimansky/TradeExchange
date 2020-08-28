@@ -7,5 +7,5 @@ manage “Trade” resources. In your first version a “Trade” might have the
 2. Stock Ticker
 3. Stock Quantity
 4. Requested Price
-5. Trade Status (E.g. all trades might initially be marked as “Created”, another component of the
-system may then “execute” pending trades and update the database record)
+5. Trade Status (E.g. all trades might initially be marked as “Created”, another component of the system may then “execute” pending trades and update the database record)
+
