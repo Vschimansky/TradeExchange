@@ -27,6 +27,10 @@ public class TradeService {
         tradeRepository.deleteById(id);
     }
 
+    public void deleteTradeById(String id) {
+        deleteTradeById(new ObjectId(id));
+    }
+
     public void deleteTrade(Trade trade) {
         tradeRepository.delete(trade);
     }
@@ -34,6 +38,10 @@ public class TradeService {
     // R
     public Optional<Trade> getTradeById(ObjectId id) {
         return tradeRepository.findById(id);
+    }
+
+    public Optional<Trade> getTradeById(String id) {
+        return getTradeById(new ObjectId(id));
     }
 
     public Collection<Trade> getAllTrades() {
