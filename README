@@ -1,0 +1,11 @@
+** Hackathon – Spring Boot REST API **
+
+You are tasked with creating one or more spring-boot REST API(s) to manage a portfolio of financial
+instruments (e.g. stocks). At the simplest level, this could consist of a single REST API which will
+manage “Trade” resources. In your first version a “Trade” might have the following attributes:
+1. Date created
+2. Stock Ticker
+3. Stock Quantity
+4. Requested Price
+5. Trade Status (E.g. all trades might initially be marked as “Created”, another component of the system may then “execute” pending trades and update the database record)
+
