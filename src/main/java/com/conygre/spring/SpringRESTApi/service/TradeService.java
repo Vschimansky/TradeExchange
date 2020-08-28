@@ -1,7 +1,6 @@
 package com.conygre.spring.SpringRESTApi.service;
 
 import java.util.Collection;
-import java.util.Optional;
 
 import com.conygre.spring.SpringRESTApi.data.TradeRepository;
 import com.conygre.spring.SpringRESTApi.entities.Trade;
@@ -36,11 +35,11 @@ public class TradeService {
     }
 
     // R
-    public Optional<Trade> getTradeById(ObjectId id) {
-        return tradeRepository.findById(id);
+    public Trade getTradeById(ObjectId id) {
+        return tradeRepository.findById(id).orElse(null);
     }
 
-    public Optional<Trade> getTradeById(String id) {
+    public Trade getTradeById(String id) {
         return getTradeById(new ObjectId(id));
     }
 

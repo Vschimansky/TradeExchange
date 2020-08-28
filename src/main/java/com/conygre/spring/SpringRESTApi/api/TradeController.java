@@ -1,7 +1,6 @@
 package com.conygre.spring.SpringRESTApi.api;
 
 import java.util.Collection;
-import java.util.Optional;
 
 import com.conygre.spring.SpringRESTApi.entities.Trade;
 import com.conygre.spring.SpringRESTApi.service.TradeService;
@@ -20,7 +19,7 @@ public class TradeController {
     private TradeService svTrade;
     
     @RequestMapping(method=RequestMethod.GET, value = "/{id}")
-    public Optional<Trade> getTradeById(@PathVariable("id") String id) {
+    public Trade getTradeById(@PathVariable("id") String id) {
         return svTrade.getTradeById(id);
     }
     
