@@ -2,29 +2,23 @@ package com.conygre.spring.SpringRESTApi;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import java.util.Date;
-import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Collection;
 
 import com.conygre.spring.SpringRESTApi.entities.Trade;
 import com.conygre.spring.SpringRESTApi.service.TradeService;
-import com.fasterxml.jackson.databind.module.SimpleAbstractTypeResolver;
-import com.mongodb.BasicDBObject;
 
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-import org.springframework.test.context.web.WebAppConfiguration;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-//@WebAppConfiguration
+@ContextConfiguration(classes=MongoJavaConfig.class)
 @SpringBootTest
 class SpringRestApiApplicationTests {
 
