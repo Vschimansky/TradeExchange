@@ -1,6 +1,6 @@
 package com.conygre.spring.SpringRESTApi.entities;
 
-import java.sql.Date;
+import java.util.Date;
 
 import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
