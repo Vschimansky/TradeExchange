@@ -62,38 +62,12 @@ public class TradeService {
     public void updateTrade(Trade other) {
         tradeRepository.save(other);
     }
-    /** 
-     * 
-     * 
-     * 
-     * ====== MVP ======
-A web UI should facilitate users to:
-	-Request to make a <b>Trade</b> on a given !!<b>Stock</b>!! ~~ "Ticker" / "Company"
-	-Browse their trading history
-	-View the status of each of their historical Trades
 
--For the initial version there will be no authentication and a single user is assumed, i.e. there is no requirement to manage users in the initial revision.
-
-&& you should use MongoDB for any persistent storage &&
-&& you can assume bid/ask at any price and qty       && 😊
-
-================
-     * 
-     * 
-     * 
-     */
-
-     /*
+    /*
     public Trade getTradeByQtyPriceInverseAct(String action, String qtyticker, double price) {
 
         int filledQty = qtyticker;
         while (filledQty > 0)
-     
-         -- 5
-            ~ price ~
-            ~ from the bottom ~
-            ^
-        
 
         if (action == "BUY") {
             // look for latest sell & that price?
@@ -108,5 +82,5 @@ A web UI should facilitate users to:
             }
         }
     }
-    **/
+    */
 }

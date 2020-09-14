@@ -12,7 +12,6 @@ import org.springframework.data.mongodb.repository.Query;
 
 public interface TradeRepository extends MongoRepository<Trade, ObjectId>
 {
-    
     //Ask about this
     public List<Trade> findByStatus(TradeStatus status);
 
