@@ -2,9 +2,10 @@ package com.conygre.spring.SpringRESTApi.entities;
 
 import java.util.Date;
 
-import org.bson.types.ObjectId;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.format.annotation.DateTimeFormat;
 
 
 /*
@@ -14,32 +15,33 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @Document
 public class Trade {
     @Id
-    private ObjectId id;
+    private String id;
+    @DateTimeFormat(pattern = "yyyy-MM-dd hh:mm:ss")
     private Date creationDate;
     private String stockTicker;
     private int stockQuantity;
     private double requestPrice;
-    private String tradeStatus;
+    private TradeStatus status = TradeStatus.CREATED;
 
-    public Trade(Date creationDate, String stockTicker, int stockQuantity, double requestPrice) {
-        this(creationDate, stockTicker, stockQuantity, requestPrice, "Created");
-    }
+    private TradeAction action;
 
-    public Trade(Date creationDate, String stockTicker, int stockQuantity, double requestPrice, String tradeStatus) {
+    public Trade(Date creationDate, String stockTicker, int stockQuantity, double requestPrice, TradeAction action) {
         this.creationDate = creationDate;
         this.stockTicker = stockTicker;
         this.stockQuantity = stockQuantity;
         this.requestPrice = requestPrice;
-        this.tradeStatus = tradeStatus;
+        this.action = action;
     }
 
-    public Trade() { }
+    public Trade() {
+        // No property 'status' found on class com.conygre.spring.SpringRESTApi.entities.Trade! Did you mean: status?
+    }
 
-    public ObjectId getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(ObjectId id) {
+    public void setId(String id) {
         this.id = id;
     }
 
@@ -75,11 +77,24 @@ public class Trade {
         this.requestPrice = requestPrice;
     }
 
-    public String getTradeStatus() {
-        return tradeStatus;
+    public TradeStatus getStatus() {
+        return status;
     }
 
-    public void setTradeStatus(String tradeStatus) {
-        this.tradeStatus = tradeStatus;
+    public void setStatus(TradeStatus status) {
+        this.status = status;
     }
+
+    public TradeAction getAction() {
+        return action;
+    }
+
+    public void setAction(TradeAction action) {
+        this.action = action;
+    }
+
+    @Override
+    public String toString() {
+        return String.format("%s\t%s\t%s", this.getStockTicker(), this.getStatus(), this.getAction());
+   }
 }

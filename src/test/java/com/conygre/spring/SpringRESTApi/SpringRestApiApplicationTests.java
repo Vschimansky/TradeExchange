@@ -7,6 +7,7 @@ import java.text.SimpleDateFormat;
 import java.util.Collection;
 
 import com.conygre.spring.SpringRESTApi.entities.Trade;
+import com.conygre.spring.SpringRESTApi.entities.TradeAction;
 import com.conygre.spring.SpringRESTApi.service.TradeService;
 
 import org.junit.jupiter.api.AfterEach;
@@ -32,9 +33,9 @@ class SpringRestApiApplicationTests {
 		SimpleDateFormat format = new SimpleDateFormat("yyyyMMdd");
 
 		Trade trade1, trade2, trade3;
-		trade1 = new Trade(format.parse("20200831"), "apple", 5, 153.84);
-		trade2 = new Trade(format.parse("20200830"), "apple", 2, 135.21);
-		trade3 = new Trade(format.parse("20200815"), "apple", 2, 12.69);
+		trade1 = new Trade(format.parse("20200831"), "apple", 5, 153.84, TradeAction.ASK);
+		trade2 = new Trade(format.parse("20200830"), "apple", 2, 135.21, TradeAction.BID);
+		trade3 = new Trade(format.parse("20200815"), "apple", 2, 12.69, TradeAction.ASK);
 
 		tradeService.addTrade(trade1);
 		tradeService.addTrade(trade2);
