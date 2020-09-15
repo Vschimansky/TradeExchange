@@ -4,7 +4,7 @@ This is a web application using Spring Boot. It holds a collection of **microser
 
 ## Architecture
 The application combines four microservices. 
-![architecture](/docs/arch.png)
+![architecture](/doc/arch.png)
 
 ## 1. Stock Microservice
 This is a spring boot application which is responsible for providing ticker. 
