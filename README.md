@@ -14,7 +14,7 @@ Returns the current Bid–ask spread for the input stock (ticker symbol).
 * ``getInfo(sym)``
 Returns a list of most recent trade for the input stock (ticker symbol).
 
-Maybe we can combine python Pandas project with this?
+We also added machine learning algorithms to analyze the relationship of the stock prices and Google search trends.
 
 
 ## 2. User Microservice
