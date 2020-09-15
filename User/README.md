@@ -11,9 +11,9 @@ Run that jar with:
 
 ```java -jar build/libs/user-service-0.0.1-SNAPSHOT.jar```
 
-OR for example with DEBUG logging and on a different port (8089):
+OR for example with DEBUG logging and on a different port (3009):
 
-```java -DLOG_LEVEL=DEBUG -DSERVER_PORT=8089 -jar build/libs/user-service-0.0.1-SNAPSHOT.jar```
+```java -DLOG_LEVEL=DEBUG -DSERVER_PORT=3009 -jar build/libs/user-service-0.0.1-SNAPSHOT.jar```
 
 
 OR just run in VSCode or any other IDE for development

@@ -2,6 +2,7 @@ package com.conygre.training.user.controller;
 
 import java.math.BigDecimal;
 
+import com.conygre.training.user.model.Trade;
 import com.conygre.training.user.model.User;
 
 import com.conygre.training.user.service.UserService;
@@ -79,14 +80,17 @@ public class UserController {
 	 *            The id of the account.
 	 * @param amount
 	 *            The amount to decrease the balance by.
+	 * @param tradeId The id of the trade. 
+	 *
 	 * @return The new balance of the account with HTTP OK.
 	 */
-	@RequestMapping(value = "/accounts/{userId}/decreaseBalance/{amount}", method = RequestMethod.GET)
-	public ResponseEntity<Double> decreaseBalance(@PathVariable("userId") final String userId, @PathVariable("amount") final double amount) {
+	@RequestMapping(value = "/accounts/{userId}/decreaseBalance/{amount}/trade/{tradeId}", method = RequestMethod.GET)
+	public ResponseEntity<Double> decreaseBalance(@PathVariable("userId") final String userId, @PathVariable("amount") final double amount, @PathVariable("tradeId") final String tradeId) {
 
 		logger.debug("UserController.decreaseBalance: id='" + userId + "', amount='" + amount + "'");
 
 		User userResponse = this.service.findAccount(userId);
+		//Trade currTrade = TradeService.getTradeById(tradeId);
 
 		BigDecimal currentBalance = userResponse.getBalance();
 

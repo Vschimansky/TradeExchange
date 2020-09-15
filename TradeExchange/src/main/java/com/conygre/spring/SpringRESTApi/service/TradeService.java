@@ -1,6 +1,8 @@
 package com.conygre.spring.SpringRESTApi.service;
 
 import java.util.Collection;
+import java.util.List;
+import java.util.Optional;
 
 import com.conygre.spring.SpringRESTApi.data.TradeRepository;
 import com.conygre.spring.SpringRESTApi.entities.Trade;
@@ -36,26 +38,37 @@ public class TradeService {
     }
 
     // R
-    public Trade getTradeById(ObjectId id) {
-        return tradeRepository.findById(id).orElse(null);
+    public boolean hasTrade(Trade trade) {
+        if (trade == null) return false;
+        return hasTrade(trade.getId());
+    }
+    
+    public boolean hasTrade(String id) {
+        return hasTrade(new ObjectId(id));
+    }
+    
+    public boolean hasTrade(ObjectId id) {
+        return getTradeById(id).isPresent();
     }
 
-    public Trade getTradeById(String id) {
+    public Optional<Trade> getTradeById(ObjectId id) {
+        return tradeRepository.findById(id);
+    }
+
+    public Optional<Trade> getTradeById(String id) {
         return getTradeById(new ObjectId(id));
     }
 
-    public Collection<Trade> getAllTrades() {
+    public List<Trade> getAllTrades() {
         return tradeRepository.findAll();
     }
 
-    public Collection<Trade> getAllTradesByStockTicker(String ticker) {
-        Iterable<Trade> tmpList = tradeRepository.customFindByStockTicker(ticker);
-        return (Collection<Trade>)tmpList;
+    public Optional<Collection<Trade>> getAllTradesByStockTicker(String ticker) {
+        return tradeRepository.customFindByStockTicker(ticker);
     }
 
-    public Collection<Trade> getAllTradesByStatus(TradeStatus status) {
-        Iterable<Trade> tmpList = tradeRepository.findByStatus(status);
-        return (Collection<Trade>)tmpList;
+    public Optional<Collection<Trade>> getAllTradesByStatus(TradeStatus status) {
+        return tradeRepository.findByStatus(status);
     }
 
     // U
@@ -64,7 +77,7 @@ public class TradeService {
     }
 
     /*
-    public Trade getTradeByQtyPriceInverseAct(String action, String qtyticker, double price) {
+    public Optional<Trade> getTradeByQtyPriceInverseAct(String action, String qtyticker, double price) {
 
         int filledQty = qtyticker;
         while (filledQty > 0)

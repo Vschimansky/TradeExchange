@@ -1,6 +1,7 @@
 package com.conygre.spring.SpringRESTApi.service;
 
 import java.util.List;
+import java.util.NoSuchElementException;
 
 import com.conygre.spring.SpringRESTApi.data.TradeRepository;
 import com.conygre.spring.SpringRESTApi.entities.Trade;
@@ -22,7 +23,8 @@ public class TradeSim {
 
     @Transactional
     public List<Trade> findTradesForProcessing() {
-        List<Trade> foundTrades = tradeRepository.findByStatus(TradeStatus.CREATED);
+        List<Trade> foundTrades = (List<Trade>)tradeRepository.findByStatus(TradeStatus.CREATED)
+                .orElseThrow(() -> new NoSuchElementException());
 
         for(Trade thisTrade: foundTrades) {
             thisTrade.setStatus(TradeStatus.PENDING);
@@ -34,7 +36,8 @@ public class TradeSim {
 
     @Transactional
     public List<Trade> findTradesForFilling() {
-        List<Trade> foundTrades = tradeRepository.findByStatus(TradeStatus.PENDING);
+        List<Trade> foundTrades = (List<Trade>)tradeRepository.findByStatus(TradeStatus.PENDING)
+        .orElseThrow(() -> new NoSuchElementException());
 
         for(Trade thisTrade: foundTrades) {
             if((int) (Math.random()*10) > 9) { 

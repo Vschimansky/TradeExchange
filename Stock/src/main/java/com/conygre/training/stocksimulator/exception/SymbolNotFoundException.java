@@ -6,6 +6,7 @@ package com.conygre.training.stocksimulator.exception;
  *
  */
 public class SymbolNotFoundException extends Exception {
+	static final long serialVersionUID = 123456789L;
 
 	public SymbolNotFoundException(String message ) {
 		super(message);

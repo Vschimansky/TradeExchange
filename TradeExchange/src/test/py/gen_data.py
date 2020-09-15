@@ -44,7 +44,7 @@ for i in range(5):
     }
     trades.append(trade)
     print('.', end='')
-    req = requests.post('http://127.0.0.1:8080/api/trade', json=trade)
+    req = requests.post('http://127.0.0.1:3001/api/trade', json=trade)
     if req.status_code != '200':
         print (req)
         print ('ruh roh ', req.status_code)

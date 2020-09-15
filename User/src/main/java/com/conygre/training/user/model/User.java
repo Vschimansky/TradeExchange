@@ -2,7 +2,7 @@ package com.conygre.training.user.model;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
-import java.util.Date;
+import java.util.ArrayList;
 
 /**
  * Entity object that represents a user account.
@@ -17,9 +17,29 @@ public class User implements Serializable {
     private String password;
     private String email;
     private String name;
-    private BigDecimal balance = new BigDecimal(0);
+    private BigDecimal balance;
     // Add the list of trades
+    private ArrayList<Trade> tradeHistory;
 
+    public User(){
+        balance = new BigDecimal("1000000");
+        tradeHistory = new ArrayList<Trade>();
+    }
+    public User(Integer id, String password, String email, String name){
+        this.id = id;
+        this.password = password;
+        this.email = email;
+        this.name = name;
+        this.balance = new BigDecimal("1000000");
+        this.tradeHistory = new ArrayList<Trade>();
+    }
+
+    public ArrayList<Trade> getTradeHistory(){
+        return tradeHistory;
+    }
+    public void setTradeHistory(ArrayList<Trade> tradeHistory){
+        this.tradeHistory = tradeHistory;
+    }
 
     public BigDecimal getBalance() {
         return balance;
@@ -52,6 +72,7 @@ public class User implements Serializable {
     public void setName(String name) {
         this.name = name;
     }
+
 
     @Override
     public String toString() {
