@@ -3,7 +3,7 @@ package com.conygre.training.user.model;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.ArrayList;
-
+import com.conygre.spring.SpringRESTApi.entities.Trade;
 /**
  * Entity object that represents a user account.
  * @author Blair Gao

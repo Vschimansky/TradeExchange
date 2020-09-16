@@ -2,10 +2,8 @@ pipeline {
   agent any
  
   stages {
-    stage('Test') {
-      steps {
-        sh './gradlew test'
-      }
+    stage('Clean gradle') {
+      sh 'chmod a+x gradlew'
     }
 
     stage('Build') {
@@ -13,18 +11,16 @@ pipeline {
         sh './gradlew build'
       }
     }
+    
+    stage('Test') {
+      steps {
+        sh './gradlew test'
+      }
+    }
 
     stage('Build Container') {
       steps {
         sh "docker build -t stock-service:0.0.${currentBuild.number} ."
-      }
-    }
-
-    stage('Deploy Container') {
-      steps {
-        sh "docker stop stock-service || echo 'No stock-service container to stop'"
-        sh "docker rm stock-service || echo 'No stock-service container to remove'"
-        sh "docker run --name stock-service --restart unless-stopped -d --net mongo-net -e DB_HOST=mongo stock-service:0.0.${currentBuild.number}"
       }
     }
   }

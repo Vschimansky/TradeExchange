@@ -4,8 +4,6 @@ plugins {
 	id 'java'
 }
 
-group = 'com.conygre.spring'
-version = '0.0.1-SNAPSHOT'
 sourceCompatibility = 1.8
 
 repositories {
@@ -33,8 +31,4 @@ dependencyManagement {
     imports {
         mavenBom "org.springframework.cloud:spring-cloud-dependencies:${springCloudVersion}"
     }
-}
-
-test {
-	useJUnitPlatform()
 }

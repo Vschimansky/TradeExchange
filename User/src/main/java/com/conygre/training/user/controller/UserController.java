@@ -2,7 +2,6 @@ package com.conygre.training.user.controller;
 
 import java.math.BigDecimal;
 
-import com.conygre.training.user.model.Trade;
 import com.conygre.training.user.model.User;
 
 import com.conygre.training.user.service.UserService;
@@ -18,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.util.UriComponentsBuilder;
+import com.conygre.spring.SpringRESTApi.entities.Trade;
 
 /**
  * REST controller for the users microservice.

@@ -20,7 +20,7 @@ pipeline {
 
     stage('Build Container') {
       steps {
-        sh "docker build -t user-service:0.0.${currentBuild.number} ."
+        sh "docker build -t gateway-service:0.0.${currentBuild.number} ."
       }
     }
   }
