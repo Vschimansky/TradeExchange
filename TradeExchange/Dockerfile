@@ -1,7 +1,14 @@
-FROM openjdk:8-jdk-alpine
+FROM gradle:6.6.1-jdk11 AS build
+COPY --chown=gradle:gradle . /home/gradle/src
+WORKDIR /home/gradle/src
+RUN gradle clean bootJar 
 
-COPY build/libs/trade-service-0.0.1-SNAPSHOT.jar app.jar
+FROM openjdk:11-jre-slim
 
-EXPOSE 3001
+EXPOSE 8080
 
-ENTRYPOINT ["java", "-jar", "/app.jar"]
+RUN mkdir /app
+
+COPY --from=build /home/gradle/src/build/libs/*.jar /app/spring-boot-application.jar
+RUN sh -c 'echo spring.data.mongodb.uri=mongodb://mymongo:27017/cds > /app/application.properties'
+ENTRYPOINT [ "sh", "-c", "java $JAVA_OPTS -Djava.security.egd=file:/dev/./urandom -jar /app/spring-boot-application.jar" ]
