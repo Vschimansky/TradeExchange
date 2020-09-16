@@ -10,5 +10,5 @@ EXPOSE 8080
 RUN mkdir /app
 
 COPY --from=build /home/gradle/src/build/libs/*.jar /app/spring-boot-application.jar
-RUN sh -c 'echo spring.data.mongodb.uri=mongodb://localhost:27017/trades/trades > /app/application.properties'
+RUN sh -c 'echo spring.data.mongodb.uri=mongodb://mymongo:27017/trades > /app/application.properties'
 ENTRYPOINT [ "sh", "-c", "java $JAVA_OPTS -Djava.security.egd=file:/dev/./urandom -jar /app/spring-boot-application.jar" ]
