@@ -1,7 +1,7 @@
 version: '3.0'
 services:
    mymongo:
-     container_name: mymongo
+     container_name: dbmongo
      image: mongo
      ports:
        - "27017:27017"
@@ -14,7 +14,7 @@ services:
        dockerfile: Dockerfile
      image: trade/trade-server:1.0.0
      links:
-       - mymongo:mymongo
+       - mymongo:dbmongo
      ports:
        - "8080:8080"
      restart: always
